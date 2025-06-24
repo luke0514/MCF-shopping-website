@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCF T-Shirt Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta property="og:title" content="MCF T-Shirt Shop" />
+  <meta property="og:description" content="Buy a shirt, support a child — Every purchase helps fund MCF programs." />
+  <meta property="og:image" content="images/mcf-tshirt-red-front.jpg" />
+  <meta property="og:url" content="http://shopmcf.kro.kr" />
+  <style>
+    :root {
+      --bg: #0a111f;
+      --primary: #d7e6ff;
+      --accent: #ff5a4d;
+      --accent-hover: #e04a3e;
+      --text: #ffffff;
+      --card: #162436;
+      --gray: #8a9aab;
+      --light-gray: #465363;
+      --border-radius: 16px;
+      --shadow: 0 15px 35px rgba(0,0,0,0.5);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --gold: #ffd700;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 5% 10%, rgba(30, 50, 80, 0.2) 0%, transparent 30%),
+        radial-gradient(circle at 95% 90%, rgba(180, 30, 50, 0.15) 0%, transparent 30%);
+      color: var(--text);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 140px 20px 100px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(100, 140, 200, 0.1);
+      background: linear-gradient(135deg, rgba(12, 22, 40, 0.95) 0%, rgba(18, 34, 58, 0.95) 100%);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(203, 225, 255, 0.05) 0%, transparent 70%),
+        radial-gradient(circle at 80% 70%, rgba(231, 90, 77, 0.05) 0%, transparent 70%);
+      z-index: 0;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      border-radius: var(--border-radius);
+      background: rgba(16, 26, 44, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(100, 140, 200, 0.15);
+      box-shadow: var(--shadow);
+    }
+
+    .logo-container {
+      width: 160px;
+      height: 160px;
+      background: linear-gradient(135deg, rgba(30, 45, 70, 0.6), rgba(50, 25, 35, 0.6));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      border: 2px solid rgba(255, 213, 0, 0.3);
+      box-shadow: 0 0 30px rgba(255, 213, 0, 0.2);
+      animation: pulse 4s infinite alternate;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 20px rgba(255, 213, 0, 0.2); }
+      100% { box-shadow: 0 0 40px rgba(255, 213, 0, 0.4); }
+    }
+
+    .logo-container img {
+      width: 100px;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.4));
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      letter-spacing: -0.5px;
+      background: linear-gradient(to right, #cbe1ff, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    header p {
+      font-size: 1.4rem;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .highlight {
+      color: var(--gold);
+      font-weight: 500;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+
+    nav {
+      background-color: rgba(10, 20, 35, 0.98);
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      padding: 22px 0;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(100, 140, 200, 0.1);
+    }
+
+    nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      position: relative;
+      padding: 8px 5px;
+      letter-spacing: 0.5px;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 1300px;
+      margin: 70px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 70px;
+      position: relative;
+      padding-bottom: 25px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent), var(--gold));
+      border-radius: 3px;
+    }
+
+    .products-container {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-bottom: 100px;
+    }
+
+    .product {
+      background: var(--card);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      text-align: center;
+      padding: 0;
+      transition: var(--transition);
+      width: 100%;
+      max-width: 550px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(100, 140, 200, 0.15);
+      position: relative;
+      z-index: 2;
+    }
+
+    .product::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    .product:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    }
+
+    .product-image {
+      height: 450px;
+      background: linear-gradient(45deg, #2c3e50, #4a6491);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .product-image img {
+      max-width: 100%;
+      max-height: 100%;
+      display: block;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      position: relative;
+      z-index: 2;
+      transition: var(--transition);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .product:hover .product-image img {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    .product-info {
+      padding: 40px;
+    }
+
+    .product-info h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .product-info p {
+      color: #d3d3d3;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .price {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin: 25px 0;
+      display: block;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+
+    .buy-button {
+      background: linear-gradient(135deg, var(--accent), #ff8a78);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 18px 35px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      width: 100%;
+      max-width: 300px;
+      margin: 20px auto 0;
+      display: block;
+      box-shadow: 0 8px 20px rgba(231, 76, 60, 0.5);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .buy-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .buy-button:hover::before {
+      left: 100%;
+    }
+
+    .buy-button:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 25px rgba(231, 76, 60, 0.6);
+    }
+
+    .toast {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: var(--card);
+      color: var(--primary);
+      padding: 20px 35px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      display: none;
+      z-index: 1000;
+      animation: fadeIn 0.4s ease-out;
+      border-left: 5px solid var(--accent);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    #payment {
+      margin: 100px auto;
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.6s ease-out;
+      background: var(--card);
+      padding: 60px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      max-width: 900px;
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #payment::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    #payment.show {
+      display: block;
+    }
+
+    #payment h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 2.4rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    #payment p {
+      color: #d3d3d3;
+      margin-bottom: 35px;
+      line-height: 1.9;
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .instructions {
+      background: rgba(30, 45, 70, 0.5);
+      padding: 35px;
+      border-radius: var(--border-radius);
+      margin: 40px 0;
+      text-align: left;
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .instructions::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--accent), var(--gold));
+    }
+
+    .instructions ol {
+      padding-left: 30px;
+      margin-top: 20px;
+    }
+
+    .instructions li {
+      margin-bottom: 20px;
+      padding-left: 15px;
+      font-size: 1.2rem;
+      position: relative;
+    }
+
+    .instructions li::before {
+      content: "•";
+      color: var(--gold);
+      font-size: 1.5rem;
+      position: absolute;
+      left: -15px;
+      top: -2px;
+    }
+
+    .instructions strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .qr-container {
+      background: rgba(30, 45, 70, 0.5);
+      border-radius: var(--border-radius);
+      padding: 30px;
+      display: inline-block;
+      margin: 30px auto;
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qr-container::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .qr-container img {
+      max-width: 280px;
+      border-radius: 12px;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.15);
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .about-section {
+      background: var(--card);
+      padding: 70px 50px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-top: 100px;
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    .about-section h2 {
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .about-section p {
+      color: #d0d8e1;
+      font-size: 1.2rem;
+      line-height: 1.9;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .about-section .highlight-box {
+      background: rgba(30, 45, 70, 0.5);
+      border-radius: var(--border-radius);
+      padding: 40px;
+      margin: 50px auto 0;
+      max-width: 800px;
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .about-section .highlight-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent), var(--gold));
+    }
+
+    .contact-section {
+      background: var(--card);
+      padding: 70px 50px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-top: 80px;
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    .contact-section h2 {
+      font-size: 2.4rem;
+      color: var(--primary);
+      margin-bottom: 30px;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .contact-section p {
+      color: #d0d8e1;
+      font-size: 1.2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+
+    .contact-section a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: var(--transition);
+      font-weight: 600;
+      position: relative;
+    }
+
+    .contact-section a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    .contact-section a:hover::after {
+      width: 100%;
+    }
+
+    .contact-section a:hover {
+      color: var(--primary);
+    }
+
+    .impact-section {
+      background: linear-gradient(135deg, rgba(30, 45, 70, 0.7), rgba(50, 25, 35, 0.7));
+      padding: 80px 50px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-top: 80px;
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .impact-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+      z-index: -1;
+    }
+
+    .impact-section h2 {
+      font-size: 2.8rem;
+      color: var(--primary);
+      margin-bottom: 40px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stat {
+      background: rgba(20, 30, 50, 0.6);
+      border-radius: var(--border-radius);
+      padding: 40px 30px;
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent), var(--gold));
+    }
+
+    .stat:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .stat i {
+      font-size: 3.5rem;
+      color: var(--gold);
+      margin-bottom: 25px;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    }
+
+    .stat-text {
+      font-size: 1.25rem;
+      color: #d0d8e1;
+      line-height: 1.7;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 60px 20px;
+      font-size: 1.1rem;
+      color: var(--gray);
+      background: rgba(8, 16, 30, 0.8);
+      margin-top: 120px;
+      border-top: 1px solid rgba(100, 140, 200, 0.1);
+      backdrop-filter: blur(10px);
+      position: relative;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, var(--accent), var(--gold));
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 99;
+      box-shadow: 0 8px 20px rgba(231, 76, 60, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-8px) scale(1.1);
+      box-shadow: 0 15px 25px rgba(231, 76, 60, 0.6);
+    }
+
+    .back-to-top svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+
+    /* Wave divider */
+    .wave-divider {
+      position: relative;
+      height: 150px;
+      overflow: hidden;
+      margin: 80px 0;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%231a2638" opacity="0.5"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%231a2638" opacity="0.7"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%231a2638"/></svg>');
+      background-size: cover;
+      background-position: bottom;
+    }
+
+    @media (max-width: 1100px) {
+      nav {
+        gap: 30px;
+        padding: 18px 0;
+      }
+      
+      nav a {
+        font-size: 1rem;
+      }
+      
+      header h1 {
+        font-size: 3.2rem;
+      }
+      
+      .section-title {
+        font-size: 2.6rem;
+        margin-bottom: 60px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 100px 20px 70px;
+      }
+      
+      .header-content {
+        padding: 30px 20px;
+      }
+      
+      .logo-container {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .logo-container img {
+        width: 80px;
+      }
+      
+      header h1 {
+        font-size: 2.8rem;
+      }
+      
+      header p {
+        font-size: 1.2rem;
+      }
+      
+      nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px 0;
+      }
+      
+      .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+        padding-bottom: 20px;
+      }
+      
+      .product-image {
+        height: 350px;
+        padding: 25px;
+      }
+      
+      .product-info {
+        padding: 30px;
+      }
+      
+      .product-info h2 {
+        font-size: 1.8rem;
+      }
+      
+      .price {
+        font-size: 1.8rem;
+      }
+      
+      .buy-button {
+        padding: 16px 25px;
+        font-size: 1.1rem;
+      }
+      
+      .about-section, .contact-section, .impact-section {
+        padding: 50px 30px;
+      }
+      
+      #payment {
+        padding: 40px 25px;
+      }
+      
+      .instructions {
+        padding: 25px;
+      }
+      
+      .back-to-top {
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="toast" id="toast">Thank you! Scroll down to scan the QR code.</div>
+  <div class="back-to-top" id="backToTop">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
+    </svg>
+  </div>
+  
+  <header>
+    <div class="header-content">
+      <div class="logo-container">
+        <img src="images/mcf-logo.png" alt="MCF Logo">
+      </div>
+      <h1>MCF T-Shirt Shop</h1>
+      <p>Buy a shirt, <span class="highlight">support a child</span> — every purchase helps fund education and healthcare for migrant children in need</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#products">Shop</a>
+    <a href="#about">About</a>
+    <a href="#impact">Impact</a>
+    <a href="#contact">Contact</a>
+    <a href="https://mcfworldwide.org" target="_blank">Official Site</a>
+  </nav>
+
+  <main>
+    <h2 class="section-title" id="products">Our Premium T-Shirt</h2>
+    
+    <div class="products-container">
+      <div class="product" data-aos="fade-up">
+        <div class="product-image">
+          <img src="images/mcf-tshirt-red-front.jpg" alt="MCF Red T-Shirt">
+        </div>
+        <div class="product-info">
+          <h2>MCF Signature Tee</h2>
+          <p>Premium 100% organic cotton t-shirt featuring the iconic MCF logo. Designed for comfort and style while making a difference.</p>
+          <span class="price">¥50.00</span>
+          <button class="buy-button" onclick="showPayment()">
+            <i class="fas fa-shopping-cart"></i> Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="wave-divider">
+      <div class="wave"></div>
+    </div>
+
+    <section id="payment">
+      <h2>Complete Your Order</h2>
+      <p>
+        Follow these simple steps to complete your purchase and support migrant children:
+      </p>
+      
+      <div class="instructions">
+        <ol>
+          <li>Scan the QR code below to pay <strong>¥50.00</strong> using WeChat</li>
+          <li>In the payment notes/message field, include:
+            <ul style="margin-top: 12px; padding-left: 25px; list-style-type: circle;">
+              <li>T-shirt size (S, M, L, XL)</li>
+              <li>Your school name, year group, and form (if applicable)</li>
+              <li>Delivery address (if not part of a school)</li>
+            </ul>
+          </li>
+          <li>MCF will receive your payment and order details directly</li>
+          <li>You'll receive a confirmation within 48 hours</li>
+        </ol>
+      </div>
+      
+      <div class="qr-container">
+        <img src="images/payment.png" alt="WeChat Pay QR Code">
+      </div>
+    </section>
+
+    <div class="wave-divider">
+      <div class="wave"></div>
+    </div>
+
+    <section class="about-section" id="about">
+      <h2>About MCF</h2>
+      <p>
+        Migrant Children's Foundation (MCF) is a non-profit organization based in Beijing, dedicated to supporting the education, health, and well-being of children from migrant communities. We work directly with local schools, volunteers, and donors to create meaningful opportunities and lasting impact.
+      </p>
+      
+      <div class="highlight-box">
+        <p>
+          <span class="highlight">Every shirt you purchase</span> directly contributes to our projects including comprehensive health checks, educational enrichment programs, and seasonal events for children in need. Your support helps us create brighter futures.
+        </p>
+      </div>
+    </section>
+
+    <section class="about-section" id="team">
+      <h2>Our Mission</h2>
+      <p>
+        Hi, I'm Luke Yoon, a student at BSB Shunyi and the creator of this initiative. I launched this project to support the Migrant Children's Foundation (MCF) by creating a student-run platform where anyone can contribute to this important cause.
+      </p>
+      
+      <div class="highlight-box">
+        <p>
+          <span class="highlight">100% of proceeds</span> from every t-shirt sold go directly to MCF's programs that support education, health, and well-being for children in migrant communities. Together, we're making a tangible difference.
+        </p>
+      </div>
+    </section>
+
+    <section class="impact-section" id="impact">
+      <h2>Your Impact</h2>
+      <p>Each shirt purchased provides vital support to children in need. Here's how your contribution creates change:</p>
+      
+      <div class="impact-stats">
+        <div class="stat">
+          <i class="fas fa-stethoscope"></i>
+          <div class="stat-text">Funds comprehensive health screenings for 2 migrant children</div>
+        </div>
+        <div class="stat">
+          <i class="fas fa-book-open"></i>
+          <div class="stat-text">Provides educational materials for an entire classroom</div>
+        </div>
+        <div class="stat">
+          <i class="fas fa-utensils"></i>
+          <div class="stat-text">Supports nutrition programs for a week at migrant schools</div>
+        </div>
+        <div class="stat">
+          <i class="fas fa-graduation-cap"></i>
+          <div class="stat-text">Funds after-school tutoring for a month</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <h2>Get In Touch</h2>
+      <p>For questions, bulk orders, or partnership opportunities:</p>
+      <p>Reach out via the <a href="https://mcfworldwide.org/contact/" target="_blank">official MCF contact page</a>.</p>
+      <p>For order inquiries, email me at <a href="lukeyoon0514@gmail.com">lukeyoon0514@gmail.com</a></p>
+    </section>
+  </main>
+
+  <div class="footer">
+    &copy; 2025 Migrant Children's Foundation | Created by Luke Yoon
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 150
+    });
+
+
+    function showPayment() {
+      document.getElementById("payment").classList.add("show");
+      const toast = document.getElementById("toast");
+      toast.style.display = "block";
+      setTimeout(() => toast.style.display = "none", 5000);
+      
+      document.getElementById("payment").scrollIntoView({ 
+        behavior: "smooth", 
+        block: "start"
+      });
+    }
+
+    const backToTopBtn = document.getElementById("backToTop");
+    
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 500) {
+        backToTopBtn.classList.add("show");
+      } else {
+        backToTopBtn.classList.remove("show");
+      }
+    });
+    
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+
+    document.addEventListener("click", function() {
+      const toast = document.getElementById("toast");
+      toast.style.display = "none";
+    });
+  </script>
+</body>
+</html>
