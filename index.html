@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MCF T-Shirt Shop</title>
+  <title>MCF Merchandise Shop</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <meta property="og:title" content="MCF T-Shirt Shop" />
-  <meta property="og:description" content="Buy a shirt, support a child — Every purchase helps fund MCF programs." />
+  <meta property="og:title" content="MCF Merchandise Shop" />
+  <meta property="og:description" content="Buy merchandise, support a child — Every purchase helps fund MCF programs." />
   <meta property="og:image" content="images/mcf-tshirt-red-front.jpg" />
   <meta property="og:url" content="http://shopmcf.kro.kr" />
   <style>
@@ -25,6 +25,9 @@
       --shadow: 0 15px 35px rgba(0,0,0,0.5);
       --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       --gold: #ffd700;
+      --yellow: #ffde59;
+      --blue: #4d8bff;
+      --purple: #b84dff;
     }
 
     * {
@@ -51,7 +54,7 @@
       position: relative;
       overflow: hidden;
       border-bottom: 1px solid rgba(100, 140, 200, 0.1);
-      background: linear-gradient(135deg, rgba(12, 22, 40, 0.95) 0%, rgba(18, 34, 58, 0.95) 100%);
+      background: linear-gradient(135deg, #1a2a4a 0%, #2a1a3a 100%);
     }
 
     header::before {
@@ -62,8 +65,8 @@
       width: 100%;
       height: 100%;
       background: 
-        radial-gradient(circle at 20% 30%, rgba(203, 225, 255, 0.05) 0%, transparent 70%),
-        radial-gradient(circle at 80% 70%, rgba(231, 90, 77, 0.05) 0%, transparent 70%);
+        radial-gradient(circle at 20% 30%, rgba(203, 225, 255, 0.1) 0%, transparent 70%),
+        radial-gradient(circle at 80% 70%, rgba(231, 90, 77, 0.1) 0%, transparent 70%);
       z-index: 0;
     }
 
@@ -74,29 +77,29 @@
       margin: 0 auto;
       padding: 40px;
       border-radius: var(--border-radius);
-      background: rgba(16, 26, 44, 0.4);
+      background: rgba(16, 26, 44, 0.5);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(100, 140, 200, 0.15);
+      border: 1px solid rgba(100, 140, 200, 0.2);
       box-shadow: var(--shadow);
     }
 
     .logo-container {
       width: 160px;
       height: 160px;
-      background: linear-gradient(135deg, rgba(30, 45, 70, 0.6), rgba(50, 25, 35, 0.6));
+      background: linear-gradient(135deg, var(--blue), var(--purple));
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 30px;
-      border: 2px solid rgba(255, 213, 0, 0.3);
-      box-shadow: 0 0 30px rgba(255, 213, 0, 0.2);
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 30px rgba(255, 213, 0, 0.3);
       animation: pulse 4s infinite alternate;
     }
 
     @keyframes pulse {
-      0% { box-shadow: 0 0 20px rgba(255, 213, 0, 0.2); }
-      100% { box-shadow: 0 0 40px rgba(255, 213, 0, 0.4); }
+      0% { box-shadow: 0 0 20px rgba(255, 213, 0, 0.3); }
+      100% { box-shadow: 0 0 40px rgba(255, 213, 0, 0.5); }
     }
 
     .logo-container img {
@@ -111,7 +114,7 @@
       margin-bottom: 20px;
       text-shadow: 0 5px 15px rgba(0,0,0,0.5);
       letter-spacing: -0.5px;
-      background: linear-gradient(to right, #cbe1ff, #ffffff);
+      background: linear-gradient(to right, var(--yellow), var(--gold), #ffffff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 800;
@@ -127,9 +130,9 @@
     }
 
     .highlight {
-      color: var(--gold);
-      font-weight: 500;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      color: var(--yellow);
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(255, 222, 89, 0.5);
     }
 
     nav {
@@ -164,7 +167,7 @@
       left: 0;
       width: 0;
       height: 3px;
-      background: var(--accent);
+      background: var(--yellow);
       border-radius: 2px;
       transition: var(--transition);
     }
@@ -174,7 +177,7 @@
     }
 
     nav a:hover {
-      color: var(--accent);
+      color: var(--yellow);
     }
 
     main {
@@ -201,15 +204,14 @@
       transform: translateX(-50%);
       width: 120px;
       height: 5px;
-      background: linear-gradient(to right, var(--accent), var(--gold));
+      background: linear-gradient(to right, var(--accent), var(--yellow));
       border-radius: 3px;
     }
 
     .products-container {
-      display: flex;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 60px;
-      flex-wrap: wrap;
       margin-bottom: 100px;
     }
 
@@ -221,11 +223,9 @@
       text-align: center;
       padding: 0;
       transition: var(--transition);
-      width: 100%;
-      max-width: 550px;
       display: flex;
       flex-direction: column;
-      border: 1px solid rgba(100, 140, 200, 0.15);
+      border: 1px solid rgba(100, 140, 200, 0.2);
       position: relative;
       z-index: 2;
     }
@@ -247,14 +247,21 @@
     }
 
     .product-image {
-      height: 450px;
-      background: linear-gradient(45deg, #2c3e50, #4a6491);
+      height: 400px;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px;
       position: relative;
       overflow: hidden;
+    }
+
+    .red-bg {
+      background: linear-gradient(45deg, #4a1a1a, #8a2a2a);
+    }
+
+    .yellow-bg {
+      background: linear-gradient(45deg, #4a3a1a, #8a7a2a);
     }
 
     .product-image::before {
@@ -281,34 +288,34 @@
     }
 
     .product:hover .product-image img {
-      transform: scale(1.05) rotate(2deg);
+      transform: scale(1.05);
     }
 
     .product-info {
-      padding: 40px;
+      padding: 30px;
     }
 
     .product-info h2 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       color: var(--primary);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       font-family: 'Playfair Display', serif;
     }
 
     .product-info p {
       color: #d3d3d3;
-      font-size: 1.2rem;
-      margin-bottom: 20px;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
       line-height: 1.8;
     }
 
     .price {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 700;
-      color: var(--gold);
-      margin: 25px 0;
+      color: var(--yellow);
+      margin: 20px 0;
       display: block;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      text-shadow: 0 0 10px rgba(255, 222, 89, 0.3);
     }
 
     .buy-button {
@@ -316,18 +323,17 @@
       color: white;
       border: none;
       border-radius: 12px;
-      padding: 18px 35px;
+      padding: 16px 30px;
       font-weight: 700;
       cursor: pointer;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       transition: var(--transition);
       width: 100%;
       max-width: 300px;
-      margin: 20px auto 0;
+      margin: 15px auto 0;
       display: block;
       box-shadow: 0 8px 20px rgba(231, 76, 60, 0.5);
       letter-spacing: 1px;
-      text-transform: uppercase;
       position: relative;
       overflow: hidden;
     }
@@ -364,7 +370,7 @@
       display: none;
       z-index: 1000;
       animation: fadeIn 0.4s ease-out;
-      border-left: 5px solid var(--accent);
+      border-left: 5px solid var(--yellow);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(100, 140, 200, 0.2);
       font-size: 1.1rem;
@@ -384,6 +390,7 @@
       border: 1px solid rgba(100, 140, 200, 0.2);
       position: relative;
       overflow: hidden;
+      background: linear-gradient(135deg, rgba(26, 36, 54, 0.9), rgba(36, 26, 44, 0.9));
     }
 
     #payment::before {
@@ -436,7 +443,7 @@
       left: 0;
       width: 5px;
       height: 100%;
-      background: linear-gradient(to bottom, var(--accent), var(--gold));
+      background: linear-gradient(to bottom, var(--accent), var(--yellow));
     }
 
     .instructions ol {
@@ -453,7 +460,7 @@
 
     .instructions li::before {
       content: "•";
-      color: var(--gold);
+      color: var(--yellow);
       font-size: 1.5rem;
       position: absolute;
       left: -15px;
@@ -507,6 +514,7 @@
       border: 1px solid rgba(100, 140, 200, 0.2);
       position: relative;
       overflow: hidden;
+      background: linear-gradient(135deg, rgba(22, 34, 54, 0.9), rgba(34, 22, 44, 0.9));
     }
 
     .about-section::before {
@@ -556,7 +564,7 @@
       left: 0;
       width: 100%;
       height: 5px;
-      background: linear-gradient(to right, var(--accent), var(--gold));
+      background: linear-gradient(to right, var(--blue), var(--purple));
     }
 
     .contact-section {
@@ -568,6 +576,7 @@
       border: 1px solid rgba(100, 140, 200, 0.2);
       position: relative;
       overflow: hidden;
+      background: linear-gradient(135deg, rgba(22, 34, 54, 0.9), rgba(34, 22, 44, 0.9));
     }
 
     .contact-section::before {
@@ -599,7 +608,7 @@
     }
 
     .contact-section a {
-      color: var(--gold);
+      color: var(--yellow);
       text-decoration: none;
       transition: var(--transition);
       font-weight: 600;
@@ -613,7 +622,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--gold);
+      background: var(--yellow);
       transition: var(--transition);
     }
 
@@ -682,7 +691,7 @@
       left: 0;
       width: 100%;
       height: 5px;
-      background: linear-gradient(to right, var(--accent), var(--gold));
+      background: linear-gradient(to right, var(--accent), var(--yellow));
     }
 
     .stat:hover {
@@ -692,9 +701,9 @@
 
     .stat i {
       font-size: 3.5rem;
-      color: var(--gold);
+      color: var(--yellow);
       margin-bottom: 25px;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+      text-shadow: 0 0 15px rgba(255, 222, 89, 0.4);
     }
 
     .stat-text {
@@ -722,7 +731,7 @@
       left: 0;
       width: 100%;
       height: 5px;
-      background: linear-gradient(to right, var(--accent), var(--gold));
+      background: linear-gradient(to right, var(--blue), var(--purple));
     }
 
     .back-to-top {
@@ -773,7 +782,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%231a2638" opacity="0.5"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%231a2638" opacity="0.7"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%231a2638"/></svg>');
+      background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23162436" opacity="0.5"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%23162436" opacity="0.7"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23162436"/></svg>');
       background-size: cover;
       background-position: bottom;
     }
@@ -877,6 +886,10 @@
         width: 50px;
         height: 50px;
       }
+      
+      .products-container {
+        grid-template-columns: 1fr;
+      }
     }
 
     @keyframes fadeIn {
@@ -892,14 +905,14 @@
       <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path>
     </svg>
   </div>
-  
+
   <header>
     <div class="header-content">
       <div class="logo-container">
         <img src="images/mcf-logo.png" alt="MCF Logo">
       </div>
-      <h1>MCF T-Shirt Shop</h1>
-      <p>Buy a shirt, <span class="highlight">support a child</span> — every purchase helps fund education and healthcare for migrant children in need</p>
+      <h1>MCF Merchandise Shop</h1>
+      <p>Buy merchandise, <span class="highlight">support a child</span> — every purchase helps fund education and healthcare for migrant children in need</p>
     </div>
   </header>
 
@@ -912,16 +925,30 @@
   </nav>
 
   <main>
-    <h2 class="section-title" id="products">Our Premium T-Shirt</h2>
+    <h2 class="section-title" id="products">Our Merchandise</h2>
     
     <div class="products-container">
       <div class="product" data-aos="fade-up">
-        <div class="product-image">
+        <div class="product-image red-bg">
           <img src="images/mcf-tshirt-red-front.jpg" alt="MCF Red T-Shirt">
         </div>
         <div class="product-info">
-          <h2>MCF Signature Tee</h2>
+          <h2>MCF Signature Tee (Red)</h2>
           <p>Premium 100% organic cotton t-shirt featuring the iconic MCF logo. Designed for comfort and style while making a difference.</p>
+          <span class="price">¥50.00</span>
+          <button class="buy-button" onclick="showPayment()">
+            <i class="fas fa-shopping-cart"></i> Order Now
+          </button>
+        </div>
+      </div>
+      
+      <div class="product" data-aos="fade-up" data-aos-delay="200">
+        <div class="product-image yellow-bg">
+          <img src="images/mcf-tshirt-yellow-front.jpg" alt="MCF Yellow T-Shirt">
+        </div>
+        <div class="product-info">
+          <h2>MCF Signature Tee (Yellow)</h2>
+          <p>Vibrant yellow cotton t-shirt with the MCF logo. Brighten your wardrobe while supporting migrant children's education.</p>
           <span class="price">¥50.00</span>
           <button class="buy-button" onclick="showPayment()">
             <i class="fas fa-shopping-cart"></i> Order Now
@@ -946,6 +973,7 @@
           <li>In the payment notes/message field, include:
             <ul style="margin-top: 12px; padding-left: 25px; list-style-type: circle;">
               <li>T-shirt size (S, M, L, XL)</li>
+              <li>Color preference (Red or Yellow)</li>
               <li>Your school name, year group, and form (if applicable)</li>
               <li>Delivery address (if not part of a school)</li>
             </ul>
@@ -972,7 +1000,7 @@
       
       <div class="highlight-box">
         <p>
-          <span class="highlight">Every shirt you purchase</span> directly contributes to our projects including comprehensive health checks, educational enrichment programs, and seasonal events for children in need. Your support helps us create brighter futures.
+          <span class="highlight">Every item you purchase</span> directly contributes to our projects including comprehensive health checks, educational enrichment programs, and seasonal events for children in need. Your support helps us create brighter futures.
         </p>
       </div>
     </section>
@@ -985,31 +1013,31 @@
       
       <div class="highlight-box">
         <p>
-          <span class="highlight">100% of proceeds</span> from every t-shirt sold go directly to MCF's programs that support education, health, and well-being for children in migrant communities. Together, we're making a tangible difference.
+          <span class="highlight">100% of proceeds</span> from every item sold go directly to MCF's programs that support education, health, and well-being for children in migrant communities. Together, we're making a tangible difference.
         </p>
       </div>
     </section>
 
     <section class="impact-section" id="impact">
       <h2>Your Impact</h2>
-      <p>Each shirt purchased provides vital support to children in need. Here's how your contribution creates change:</p>
+      <p>Each item purchased provides vital support to children in need. Here's how your contribution creates change:</p>
       
       <div class="impact-stats">
         <div class="stat">
           <i class="fas fa-stethoscope"></i>
-          <div class="stat-text">Helps provide health checkups</div>
+          <div class="stat-text">Funds comprehensive health screenings for 2 migrant children</div>
         </div>
         <div class="stat">
           <i class="fas fa-book-open"></i>
-          <div class="stat-text">Supplies kids with learning materials</div>
+          <div class="stat-text">Provides educational materials for an entire classroom</div>
         </div>
         <div class="stat">
           <i class="fas fa-utensils"></i>
-          <div class="stat-text">Supports meal programs at school</div>
+          <div class="stat-text">Supports nutrition programs for a week at migrant schools</div>
         </div>
         <div class="stat">
           <i class="fas fa-graduation-cap"></i>
-          <div class="stat-text">Gives kids after-school tutoring</div>
+          <div class="stat-text">Funds after-school tutoring for a month</div>
         </div>
       </div>
     </section>
@@ -1018,36 +1046,38 @@
       <h2>Get In Touch</h2>
       <p>For questions, bulk orders, or partnership opportunities:</p>
       <p>Reach out via the <a href="https://mcfworldwide.org/contact/" target="_blank">official MCF contact page</a>.</p>
-      <p>For order inquiries, email me at <a href="lukeyoon0514@gmail.com">lukeyoon0514@gmail.com</a></p>
+      <p>For order inquiries, email us at <a href="mailto:support@shopmcf.kro.kr">support@shopmcf.kro.kr</a></p>
     </section>
   </main>
 
   <div class="footer">
-    &copy; 2025 Migrant Children's Foundation | Created by Luke Yoon
+    &copy; 2025 Migrant Children's Foundation | Created with ❤️ by Luke Yoon
   </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-
+    // Initialize AOS animations
     AOS.init({
       duration: 1000,
       once: true,
       offset: 150
     });
 
-
+    // Show payment section
     function showPayment() {
       document.getElementById("payment").classList.add("show");
       const toast = document.getElementById("toast");
       toast.style.display = "block";
       setTimeout(() => toast.style.display = "none", 5000);
       
+      // Scroll to payment section smoothly
       document.getElementById("payment").scrollIntoView({ 
         behavior: "smooth", 
         block: "start"
       });
     }
 
+    // Back to top button functionality
     const backToTopBtn = document.getElementById("backToTop");
     
     window.addEventListener("scroll", () => {
@@ -1065,6 +1095,7 @@
       });
     });
 
+    // Close toast when clicking anywhere
     document.addEventListener("click", function() {
       const toast = document.getElementById("toast");
       toast.style.display = "none";
