@@ -191,15 +191,41 @@
       background: linear-gradient(135deg, #ff8a78, var(--accent));
       color: #fff;
     }
-    body.light-mode .product-overlay {
-      background: rgba(230, 230, 230, 0.92);
-      color: var(--accent);
-    }
     body.light-mode .section-title {
       color: #18191a !important;
     }
     body.light-mode main > section, body.light-mode .about-section, body.light-mode .contact-section, body.light-mode .impact-section {
       margin-bottom: 140px;
+    }
+    body.light-mode #payment {
+      background: #fff !important;
+      color: #18191a !important;
+      border: 1px solid #e3e6ee;
+      box-shadow: 0 4px 24px rgba(77,139,255,0.06);
+      padding: 56px 36px;
+      border-radius: 18px;
+      background-image: none !important;
+    }
+    body.light-mode #payment::before {
+      display: none !important;
+    }
+    body.light-mode #payment h2 {
+      color: #18191a !important;
+    }
+    body.light-mode #payment p,
+    body.light-mode #payment li,
+    body.light-mode #payment strong {
+      color: #18191a !important;
+    }
+    body.light-mode .instructions {
+      background: #f8f9fb !important;
+      color: #18191a !important;
+      border: 1px solid #e3e6ee;
+    }
+    body.light-mode .qr-container {
+      background: #f8f9fb !important;
+      border: 1px solid #e3e6ee;
+      box-shadow: 0 2px 8px rgba(77,139,255,0.04);
     }
 
     header {
@@ -337,25 +363,6 @@
       transform: translateY(-18px) scale(1.03);
       box-shadow: 0 25px 60px 0 rgba(255, 90, 77, 0.18), 0 8px 30px 0 rgba(77, 139, 255, 0.12);
     }
-    .product .product-overlay {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(26, 42, 74, 0.85);
-      color: var(--yellow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.4s;
-      font-size: 1.3rem;
-      font-weight: 600;
-      z-index: 10;
-      pointer-events: none;
-    }
-    .product:hover .product-overlay {
-      opacity: 1;
-      pointer-events: auto;
-    }
     .buy-button {
       background: linear-gradient(135deg, var(--accent), #ff8a78);
       color: white;
@@ -478,6 +485,7 @@
       padding: 40px;
       position: relative;
       overflow: hidden;
+      z-index: 1;
     }
 
     .red-bg {
@@ -1100,69 +1108,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Product Modal Styles */
-    .product-modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0; top: 0; width: 100vw; height: 100vh;
-      background: rgba(10, 17, 31, 0.85);
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.3s;
-    }
-    .product-modal.show {
-      display: flex;
-    }
-    .modal-content {
-      background: var(--card);
-      border-radius: var(--border-radius);
-      box-shadow: 0 12px 40px rgba(77, 139, 255, 0.18);
-      padding: 40px 30px;
-      max-width: 420px;
-      width: 90vw;
-      text-align: center;
-      position: relative;
-      animation: fadeIn 0.4s;
-    }
-    .modal-content img {
-      max-width: 220px;
-      border-radius: 12px;
-      margin-bottom: 25px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    }
-    .modal-content h2 {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 12px;
-      font-family: 'Playfair Display', serif;
-    }
-    .modal-content p {
-      color: #d3d3d3;
-      font-size: 1.1rem;
-      margin-bottom: 18px;
-    }
-    .modal-content .price {
-      font-size: 1.5rem;
-      color: var(--yellow);
-      margin-bottom: 18px;
-      display: block;
-    }
-    .modal-close {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      background: none;
-      border: none;
-      color: var(--gray);
-      font-size: 2rem;
-      cursor: pointer;
-      transition: color 0.2s;
-    }
-    .modal-close:hover {
-      color: var(--accent);
-    }
-
     /* Toggle Button */
     .mode-toggle {
       position: fixed;
@@ -1221,11 +1166,10 @@
     <h2 class="section-title" id="products">Our Merchandise</h2>
     
     <div class="products-container">
-      <div class="product" data-aos="fade-up" data-product='{"img":"images/mcf-tshirt-red-front.jpg","title":"MCF Signature Tee (Red)","desc":"Premium 100% organic cotton t-shirt featuring the iconic MCF logo. Designed for comfort and style while making a difference.","price":"¥50.00"}'>
+      <div class="product" data-aos="fade-up">
         <div class="product-image red-bg">
           <img src="images/mcf-tshirt-red-front.jpg" alt="MCF Signature Tee in Red - 100% organic cotton, MCF logo, premium quality">
         </div>
-        <div class="product-overlay">View Details</div>
         <div class="product-info">
           <h2>MCF Signature Tee (Red)</h2>
           <p>Premium 100% organic cotton t-shirt featuring the iconic MCF logo. Designed for comfort and style while making a difference.</p>
@@ -1236,11 +1180,10 @@
         </div>
       </div>
       
-      <div class="product" data-aos="fade-up" data-aos-delay="200" data-product='{"img":"images/mcf-tshirt-yellow-front.jpg","title":"MCF Signature Tee (Yellow)","desc":"Vibrant yellow cotton t-shirt with the MCF logo. Brighten your wardrobe while supporting children's education.","price":"¥50.00"}'>
+      <div class="product" data-aos="fade-up" data-aos-delay="200">
         <div class="product-image yellow-bg">
           <img src="images/mcf-tshirt-yellow-front.jpg" alt="MCF Signature Tee in Yellow - 100% cotton, MCF logo, bright color">
         </div>
-        <div class="product-overlay">View Details</div>
         <div class="product-info">
           <h2>MCF Signature Tee (Yellow)</h2>
           <p>Vibrant yellow cotton t-shirt with the MCF logo. Brighten your wardrobe while supporting children's education.</p>
@@ -1251,11 +1194,10 @@
         </div>
       </div>
       
-      <div class="product" data-aos="fade-up" data-aos-delay="400" data-product='{"img":"images/mcf-tshirt-black-front.jpg","title":"MCF Signature Tee (Black)","desc":"Classic black cotton t-shirt with the MCF logo. A timeless piece that supports children's education and well-being.","price":"¥50.00"}'>
+      <div class="product" data-aos="fade-up" data-aos-delay="400">
         <div class="product-image black-bg">
           <img src="images/mcf-tshirt-black-front.jpg" alt="MCF Signature Tee in Black - classic cotton, MCF logo, timeless style"> 
         </div>
-        <div class="product-overlay">View Details</div>
         <div class="product-info">
           <h2>MCF Signature Tee (Black)</h2>
           <p>Classic black cotton t-shirt with the MCF logo. A timeless piece that supports children's education and well-being.</p>
@@ -1266,11 +1208,10 @@
         </div>
       </div>
       
-      <div class="product" data-aos="fade-up" data-aos-delay="600" data-product='{"img":"images/mcf-tshirt-white-front.jpg","title":"MCF Signature Tee (White)","desc":"Crisp white cotton t-shirt with the MCF logo. A versatile classic that supports education for children in need.","price":"¥50.00"}'>
+      <div class="product" data-aos="fade-up" data-aos-delay="600">
         <div class="product-image white-bg">
           <img src="images/mcf-tshirt-white-front.jpg" alt="MCF Signature Tee in White - crisp cotton, MCF logo, versatile classic"> 
         </div>
-        <div class="product-overlay">View Details</div>
         <div class="product-info">
           <h2>MCF Signature Tee (White)</h2>
           <p>Crisp white cotton t-shirt with the MCF logo. A versatile classic that supports education for children in need.</p>
@@ -1394,18 +1335,6 @@
     <i class="fas fa-envelope"></i> Contact
   </button>
 
-  <!-- Product Modal -->
-  <div class="product-modal" id="productModal">
-    <div class="modal-content">
-      <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
-      <img id="modalImg" src="" alt="Product image">
-      <h2 id="modalTitle"></h2>
-      <p id="modalDesc"></p>
-      <span class="price" id="modalPrice"></span>
-      <button class="buy-button" id="modalOrderBtn"><i class="fas fa-shopping-cart"></i> Order Now</button>
-    </div>
-  </div>
-
   <button class="mode-toggle" id="modeToggle" aria-label="Toggle light/dark mode">
     <i class="fas fa-sun" id="modeIcon"></i>
   </button>
@@ -1432,66 +1361,18 @@
       });
     }
 
-    // Product Modal Logic
-    const productModal = document.getElementById('productModal');
-    const modalImg = document.getElementById('modalImg');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalPrice = document.getElementById('modalPrice');
-    const modalOrderBtn = document.getElementById('modalOrderBtn');
-    const modalCloseBtn = document.getElementById('modalCloseBtn');
-    let lastFocusedOrderBtn = null;
-
-    document.querySelectorAll('.product').forEach(product => {
-      // Overlay click
-      product.querySelector('.product-overlay').addEventListener('click', function(e) {
-        e.stopPropagation();
-        const data = JSON.parse(product.getAttribute('data-product'));
-        modalImg.src = data.img;
-        modalImg.alt = data.title + ' image';
-        modalTitle.textContent = data.title;
-        modalDesc.textContent = data.desc;
-        modalPrice.textContent = data.price;
-        productModal.classList.add('show');
+    // Attach event listeners after DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all buy buttons
+      const buyButtons = document.querySelectorAll('.buy-button');
+      
+      // Attach click event to each buy button
+      buyButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          showPayment();
+        });
       });
-      // Card click (optional: open modal)
-      product.addEventListener('click', function(e) {
-        if (e.target.classList.contains('buy-button')) return;
-        if (e.target.classList.contains('product-overlay')) return;
-        const data = JSON.parse(product.getAttribute('data-product'));
-        modalImg.src = data.img;
-        modalImg.alt = data.title + ' image';
-        modalTitle.textContent = data.title;
-        modalDesc.textContent = data.desc;
-        modalPrice.textContent = data.price;
-        productModal.classList.add('show');
-      });
-      // Order Now button in card
-      product.querySelector('.buy-button').addEventListener('click', function(e) {
-        e.stopPropagation();
-        lastFocusedOrderBtn = this;
-        showPayment();
-      });
-    });
-    // Modal close
-    modalCloseBtn.addEventListener('click', function() {
-      productModal.classList.remove('show');
-      if (lastFocusedOrderBtn) lastFocusedOrderBtn.focus();
-    });
-    // Modal Order Now
-    modalOrderBtn.addEventListener('click', function() {
-      productModal.classList.remove('show');
-      showPayment();
-    });
-    // Close modal on outside click
-    productModal.addEventListener('click', function(e) {
-      if (e.target === productModal) {
-        productModal.classList.remove('show');
-      }
-    });
-    // ESC key closes modal
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') productModal.classList.remove('show');
     });
 
     // Back to top button functionality
@@ -1509,6 +1390,7 @@
         behavior: "smooth"
       });
     });
+
     // Close toast when clicking anywhere
     document.addEventListener("click", function() {
       const toast = document.getElementById("toast");
