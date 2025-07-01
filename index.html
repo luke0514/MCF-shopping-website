@@ -50,85 +50,186 @@
 
     header {
       text-align: center;
-      padding: 140px 20px 100px;
+      padding: 160px 20px 120px;
       position: relative;
       overflow: hidden;
-      border-bottom: 1px solid rgba(100, 140, 200, 0.1);
+      border-bottom: none;
       background: linear-gradient(135deg, #1a2a4a 0%, #2a1a3a 100%);
+      min-height: 600px;
+      animation: gradientBG 10s ease-in-out infinite alternate;
     }
-
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        radial-gradient(circle at 20% 30%, rgba(203, 225, 255, 0.1) 0%, transparent 70%),
-        radial-gradient(circle at 80% 70%, rgba(231, 90, 77, 0.1) 0%, transparent 70%);
-      z-index: 0;
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px;
-      border-radius: var(--border-radius);
-      background: rgba(16, 26, 44, 0.5);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(100, 140, 200, 0.2);
-      box-shadow: var(--shadow);
+    
+    @keyframes gradientBG {
+      0% {
+        background: linear-gradient(135deg, #1a2a4a 0%, #2a1a3a 100%);
+      }
+      100% {
+        background: linear-gradient(135deg, #2a1a3a 0%, #1a2a4a 100%);
+      }
     }
 
     .logo-container {
-      width: 160px;
-      height: 160px;
+      width: 200px;
+      height: 200px;
       background: linear-gradient(135deg, var(--blue), var(--purple));
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 30px;
-      border: 2px solid var(--gold);
-      box-shadow: 0 0 30px rgba(255, 213, 0, 0.3);
+      margin: 0 auto 40px;
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 60px 20px rgba(255, 213, 0, 0.4), 0 0 0 10px rgba(77, 139, 255, 0.1);
       animation: pulse 4s infinite alternate;
+      position: relative;
     }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 20px rgba(255, 213, 0, 0.3); }
-      100% { box-shadow: 0 0 40px rgba(255, 213, 0, 0.5); }
+    .logo-container::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255, 222, 89, 0.15) 0%, transparent 80%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
     }
-
     .logo-container img {
-      width: 100px;
-      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.4));
+      width: 120px;
+      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.5));
+      position: relative;
+      z-index: 1;
     }
-
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 50px;
+      border-radius: var(--border-radius);
+      background: rgba(16, 26, 44, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      box-shadow: var(--shadow);
+    }
     header h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 4rem;
+      font-size: 4.5rem;
       color: var(--primary);
-      margin-bottom: 20px;
-      text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      margin-bottom: 25px;
+      text-shadow: 0 8px 25px rgba(0,0,0,0.6);
       letter-spacing: -0.5px;
       background: linear-gradient(to right, var(--yellow), var(--gold), #ffffff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 800;
     }
-
     header p {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       color: var(--gray);
       max-width: 700px;
-      margin: 0 auto;
+      margin: 0 auto 30px;
       font-weight: 300;
       line-height: 1.8;
     }
-
+    .shop-now-btn {
+      background: linear-gradient(90deg, var(--yellow), var(--accent));
+      color: #222;
+      border: none;
+      border-radius: 30px;
+      padding: 18px 48px;
+      font-weight: 700;
+      font-size: 1.3rem;
+      box-shadow: 0 8px 30px rgba(255, 222, 89, 0.3);
+      cursor: pointer;
+      margin-top: 30px;
+      transition: var(--transition);
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+    .shop-now-btn:hover {
+      background: linear-gradient(90deg, var(--accent), var(--yellow));
+      color: #fff;
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 15px 40px rgba(255, 90, 77, 0.3);
+    }
+    /* SVG Wave Divider */
+    .svg-divider {
+      width: 100%;
+      height: 120px;
+      display: block;
+      margin: 0;
+      padding: 0;
+      line-height: 0;
+    }
+    /* Product Card Enhancements */
+    .product {
+      background: var(--card);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 10px 40px 0 rgba(77, 139, 255, 0.10), 0 2px 8px 0 rgba(255, 90, 77, 0.08);
+      text-align: center;
+      padding: 0;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(100, 140, 200, 0.2);
+      position: relative;
+      z-index: 2;
+    }
+    .product:hover {
+      transform: translateY(-18px) scale(1.03);
+      box-shadow: 0 25px 60px 0 rgba(255, 90, 77, 0.18), 0 8px 30px 0 rgba(77, 139, 255, 0.12);
+    }
+    .product .product-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(26, 42, 74, 0.85);
+      color: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s;
+      font-size: 1.3rem;
+      font-weight: 600;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .product:hover .product-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .buy-button {
+      background: linear-gradient(135deg, var(--accent), #ff8a78);
+      color: white;
+      border: none;
+      border-radius: 16px;
+      padding: 18px 36px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: var(--transition);
+      width: 100%;
+      max-width: 320px;
+      margin: 18px auto 0;
+      display: block;
+      box-shadow: 0 10px 30px rgba(231, 76, 60, 0.5);
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+    .buy-button i {
+      margin-right: 10px;
+    }
+    .buy-button:hover {
+      background: linear-gradient(135deg, #ff8a78, var(--accent));
+      color: #fff;
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 18px 40px rgba(231, 76, 60, 0.6);
+    }
     .highlight {
       color: var(--yellow);
       font-weight: 600;
@@ -215,37 +316,6 @@
       margin-bottom: 100px;
     }
 
-    .product {
-      background: var(--card);
-      border-radius: var(--border-radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      text-align: center;
-      padding: 0;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      border: 1px solid rgba(100, 140, 200, 0.2);
-      position: relative;
-      z-index: 2;
-    }
-
-    .product::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%);
-      z-index: -1;
-    }
-
-    .product:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-    }
-
     .product-image {
       height: 400px;
       display: flex;
@@ -324,46 +394,6 @@
       margin: 20px 0;
       display: block;
       text-shadow: 0 0 10px rgba(255, 222, 89, 0.3);
-    }
-
-    .buy-button {
-      background: linear-gradient(135deg, var(--accent), #ff8a78);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 16px 30px;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: var(--transition);
-      width: 100%;
-      max-width: 300px;
-      margin: 15px auto 0;
-      display: block;
-      box-shadow: 0 8px 20px rgba(231, 76, 60, 0.5);
-      letter-spacing: 1px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .buy-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: 0.5s;
-    }
-
-    .buy-button:hover::before {
-      left: 100%;
-    }
-
-    .buy-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 25px rgba(231, 76, 60, 0.6);
     }
 
     .toast {
@@ -643,11 +673,11 @@
     }
 
     .impact-section {
-      background: linear-gradient(135deg, rgba(30, 45, 70, 0.7), rgba(50, 25, 35, 0.7));
-      padding: 80px 50px;
+      background: linear-gradient(135deg, rgba(30, 45, 70, 0.9), rgba(50, 25, 35, 0.8), rgba(77, 139, 255, 0.12));
+      padding: 100px 50px;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      margin-top: 80px;
+      margin-top: 120px;
       border: 1px solid rgba(100, 140, 200, 0.2);
       text-align: center;
       position: relative;
@@ -666,30 +696,31 @@
     }
 
     .impact-section h2 {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       color: var(--primary);
-      margin-bottom: 40px;
+      margin-bottom: 50px;
       font-family: 'Playfair Display', serif;
     }
 
     .impact-stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-top: 50px;
+      gap: 50px;
+      margin-top: 60px;
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .stat {
-      background: rgba(20, 30, 50, 0.6);
+      background: rgba(20, 30, 50, 0.7);
       border-radius: var(--border-radius);
-      padding: 40px 30px;
+      padding: 50px 30px;
       border: 1px solid rgba(100, 140, 200, 0.2);
       transition: var(--transition);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 8px 30px rgba(77, 139, 255, 0.10);
     }
 
     .stat::before {
@@ -708,38 +739,48 @@
     }
 
     .stat i {
-      font-size: 3.5rem;
-      color: var(--yellow);
-      margin-bottom: 25px;
-      text-shadow: 0 0 15px rgba(255, 222, 89, 0.4);
+      font-size: 4rem;
+      margin-bottom: 30px;
+      text-shadow: 0 0 20px rgba(255, 222, 89, 0.4);
     }
 
+    .stat:nth-child(1) i { color: var(--yellow); }
+    .stat:nth-child(2) i { color: var(--blue); }
+    .stat:nth-child(3) i { color: var(--accent); }
+    .stat:nth-child(4) i { color: var(--purple); }
+
     .stat-text {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       color: #d0d8e1;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
     .footer {
       text-align: center;
-      padding: 60px 20px;
-      font-size: 1.1rem;
+      padding: 70px 20px 40px 20px;
+      font-size: 1.2rem;
       color: var(--gray);
-      background: rgba(8, 16, 30, 0.8);
-      margin-top: 120px;
+      background: linear-gradient(90deg, #162436 60%, #4d8bff 100%);
+      margin-top: 140px;
       border-top: 1px solid rgba(100, 140, 200, 0.1);
       backdrop-filter: blur(10px);
       position: relative;
     }
 
-    .footer::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(to right, var(--blue), var(--purple));
+    .footer .social-icons {
+      margin: 25px 0 10px 0;
+    }
+
+    .footer .social-icons a {
+      color: var(--yellow);
+      margin: 0 12px;
+      font-size: 2rem;
+      transition: color 0.3s;
+      display: inline-block;
+    }
+
+    .footer .social-icons a:hover {
+      color: var(--primary);
     }
 
     .back-to-top {
@@ -904,6 +945,69 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* Product Modal Styles */
+    .product-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(10, 17, 31, 0.85);
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+    .product-modal.show {
+      display: flex;
+    }
+    .modal-content {
+      background: var(--card);
+      border-radius: var(--border-radius);
+      box-shadow: 0 12px 40px rgba(77, 139, 255, 0.18);
+      padding: 40px 30px;
+      max-width: 420px;
+      width: 90vw;
+      text-align: center;
+      position: relative;
+      animation: fadeIn 0.4s;
+    }
+    .modal-content img {
+      max-width: 220px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+    .modal-content h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif;
+    }
+    .modal-content p {
+      color: #d3d3d3;
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+    }
+    .modal-content .price {
+      font-size: 1.5rem;
+      color: var(--yellow);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: none;
+      border: none;
+      color: var(--gray);
+      font-size: 2rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .modal-close:hover {
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -921,7 +1025,9 @@
       </div>
       <h1>MCF Merchandise Shop</h1>
       <p>Buy merchandise, <span class="highlight">support a child</span> — every purchase helps fund education and healthcare for children in need</p>
+      <button class="shop-now-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'});">Shop Now</button>
     </div>
+    <svg class="svg-divider" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#162436" fill-opacity="1" d="M0,64L48,74.7C96,85,192,107,288,117.3C384,128,480,128,576,112C672,96,768,64,864,53.3C960,43,1056,53,1152,69.3C1248,85,1344,107,1392,117.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
   </header>
 
   <nav>
@@ -936,57 +1042,61 @@
     <h2 class="section-title" id="products">Our Merchandise</h2>
     
     <div class="products-container">
-      <div class="product" data-aos="fade-up">
+      <div class="product" data-aos="fade-up" data-product='{"img":"images/mcf-tshirt-red-front.jpg","title":"MCF Signature Tee (Red)","desc":"Premium 100% organic cotton t-shirt featuring the iconic MCF logo. Designed for comfort and style while making a difference.","price":"¥50.00"}'>
         <div class="product-image red-bg">
-          <img src="images/mcf-tshirt-red-front.jpg" alt="MCF Red T-Shirt">
+          <img src="images/mcf-tshirt-red-front.jpg" alt="MCF Signature Tee in Red - 100% organic cotton, MCF logo, premium quality">
         </div>
+        <div class="product-overlay">View Details</div>
         <div class="product-info">
           <h2>MCF Signature Tee (Red)</h2>
           <p>Premium 100% organic cotton t-shirt featuring the iconic MCF logo. Designed for comfort and style while making a difference.</p>
           <span class="price">¥50.00</span>
-          <button class="buy-button" onclick="showPayment()">
+          <button class="buy-button">
             <i class="fas fa-shopping-cart"></i> Order Now
           </button>
         </div>
       </div>
       
-      <div class="product" data-aos="fade-up" data-aos-delay="200">
+      <div class="product" data-aos="fade-up" data-aos-delay="200" data-product='{"img":"images/mcf-tshirt-yellow-front.jpg","title":"MCF Signature Tee (Yellow)","desc":"Vibrant yellow cotton t-shirt with the MCF logo. Brighten your wardrobe while supporting children's education.","price":"¥50.00"}'>
         <div class="product-image yellow-bg">
-          <img src="images/mcf-tshirt-yellow-front.jpg" alt="MCF Yellow T-Shirt">
+          <img src="images/mcf-tshirt-yellow-front.jpg" alt="MCF Signature Tee in Yellow - 100% cotton, MCF logo, bright color">
         </div>
+        <div class="product-overlay">View Details</div>
         <div class="product-info">
           <h2>MCF Signature Tee (Yellow)</h2>
           <p>Vibrant yellow cotton t-shirt with the MCF logo. Brighten your wardrobe while supporting children's education.</p>
           <span class="price">¥50.00</span>
-          <button class="buy-button" onclick="showPayment()">
+          <button class="buy-button">
             <i class="fas fa-shopping-cart"></i> Order Now
           </button>
         </div>
       </div>
       
-      <div class="product" data-aos="fade-up" data-aos-delay="400">
+      <div class="product" data-aos="fade-up" data-aos-delay="400" data-product='{"img":"images/mcf-tshirt-black-front.jpg","title":"MCF Signature Tee (Black)","desc":"Classic black cotton t-shirt with the MCF logo. A timeless piece that supports children's education and well-being.","price":"¥50.00"}'>
         <div class="product-image black-bg">
-          <img src="images/mcf-tshirt-black-front.jpg" alt="MCF Black T-Shirt"> 
+          <img src="images/mcf-tshirt-black-front.jpg" alt="MCF Signature Tee in Black - classic cotton, MCF logo, timeless style"> 
         </div>
+        <div class="product-overlay">View Details</div>
         <div class="product-info">
           <h2>MCF Signature Tee (Black)</h2>
           <p>Classic black cotton t-shirt with the MCF logo. A timeless piece that supports children's education and well-being.</p>
           <span class="price">¥50.00</span>
-          <button class="buy-button" onclick="showPayment()">
+          <button class="buy-button">
             <i class="fas fa-shopping-cart"></i> Order Now
           </button>
         </div>
       </div>
       
-      <div class="product" data-aos="fade-up" data-aos-delay="600">
+      <div class="product" data-aos="fade-up" data-aos-delay="600" data-product='{"img":"images/mcf-tshirt-white-front.jpg","title":"MCF Signature Tee (White)","desc":"Crisp white cotton t-shirt with the MCF logo. A versatile classic that supports education for children in need.","price":"¥50.00"}'>
         <div class="product-image white-bg">
-          <img src="images/mcf-tshirt-white-front.jpg" alt="MCF White T-Shirt"> 
+          <img src="images/mcf-tshirt-white-front.jpg" alt="MCF Signature Tee in White - crisp cotton, MCF logo, versatile classic"> 
         </div>
+        <div class="product-overlay">View Details</div>
         <div class="product-info">
           <h2>MCF Signature Tee (White)</h2>
           <p>Crisp white cotton t-shirt with the MCF logo. A versatile classic that supports education for children in need.</p>
           <span class="price">¥50.00</span>
-          <button class="buy-button" onclick="showPayment()">
+          <button class="buy-button">
             <i class="fas fa-shopping-cart"></i> Order Now
           </button>
         </div>
@@ -1020,7 +1130,7 @@
       </div>
       
       <div class="qr-container">
-        <img src="images/payment.png" alt="WeChat Pay QR Code">
+        <img src="images/payment.png" alt="WeChat Pay QR Code for MCF Merchandise Shop">
       </div>
     </section>
 
@@ -1041,6 +1151,8 @@
       </div>
     </section>
 
+    <svg class="svg-divider" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#162436" fill-opacity="1" d="M0,64L48,74.7C96,85,192,107,288,117.3C384,128,480,128,576,112C672,96,768,64,864,53.3C960,43,1056,53,1152,69.3C1248,85,1344,107,1392,117.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+
     <section class="about-section" id="team">
       <h2>Our Mission</h2>
       <p>
@@ -1054,6 +1166,8 @@
       </div>
     </section>
 
+    <svg class="svg-divider" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#162436" fill-opacity="1" d="M0,64L48,74.7C96,85,192,107,288,117.3C384,128,480,128,576,112C672,96,768,64,864,53.3C960,43,1056,53,1152,69.3C1248,85,1344,107,1392,117.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+
     <section class="impact-section" id="impact">
       <h2>Your Impact</h2>
       <p>Each item purchased provides vital support to children in need. Here's how your contribution creates change:</p>
@@ -1061,22 +1175,24 @@
       <div class="impact-stats">
         <div class="stat">
           <i class="fas fa-stethoscope"></i>
-          <div class="stat-text">Funds comprehensive health screenings for children in need</div>
+          <div class="stat-text">Supports health and wellness programs for children in need</div>
         </div>
         <div class="stat">
           <i class="fas fa-book-open"></i>
-          <div class="stat-text">Provides educational materials for classrooms</div>
+          <div class="stat-text">Helps provide educational resources and opportunities</div>
         </div>
         <div class="stat">
           <i class="fas fa-utensils"></i>
-          <div class="stat-text">Supports nutrition programs for schools</div>
+          <div class="stat-text">Contributes to nutrition and meal programs for children</div>
         </div>
         <div class="stat">
           <i class="fas fa-graduation-cap"></i>
-          <div class="stat-text">Funds after-school tutoring for students</div>
+          <div class="stat-text">Enables after-school and enrichment activities</div>
         </div>
       </div>
     </section>
+
+    <svg class="svg-divider" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#162436" fill-opacity="1" d="M0,64L48,74.7C96,85,192,107,288,117.3C384,128,480,128,576,112C672,96,768,64,864,53.3C960,43,1056,53,1152,69.3C1248,85,1344,107,1392,117.3L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
 
     <section class="contact-section" id="contact">
       <h2>Get In Touch</h2>
@@ -1087,7 +1203,28 @@
   </main>
 
   <div class="footer">
+    <div class="social-icons">
+      <a href="https://instagram.com/mcfworldwide" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://facebook.com/mcfworldwide" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com/mcfworldwide" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
     &copy; 2025 Migrant Children's Foundation | Created by Luke Yoon
+  </div>
+
+  <button class="floating-contact" onclick="window.location.href='mailto:lukeyoon0514@gmail.com'">
+    <i class="fas fa-envelope"></i> Contact
+  </button>
+
+  <!-- Product Modal -->
+  <div class="product-modal" id="productModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+      <img id="modalImg" src="" alt="Product image">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <span class="price" id="modalPrice"></span>
+      <button class="buy-button" id="modalOrderBtn"><i class="fas fa-shopping-cart"></i> Order Now</button>
+    </div>
   </div>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -1105,7 +1242,6 @@
       const toast = document.getElementById("toast");
       toast.style.display = "block";
       setTimeout(() => toast.style.display = "none", 5000);
-      
       // Scroll to payment section smoothly
       document.getElementById("payment").scrollIntoView({ 
         behavior: "smooth", 
@@ -1113,9 +1249,70 @@
       });
     }
 
+    // Product Modal Logic
+    const productModal = document.getElementById('productModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalOrderBtn = document.getElementById('modalOrderBtn');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    let lastFocusedOrderBtn = null;
+
+    document.querySelectorAll('.product').forEach(product => {
+      // Overlay click
+      product.querySelector('.product-overlay').addEventListener('click', function(e) {
+        e.stopPropagation();
+        const data = JSON.parse(product.getAttribute('data-product'));
+        modalImg.src = data.img;
+        modalImg.alt = data.title + ' image';
+        modalTitle.textContent = data.title;
+        modalDesc.textContent = data.desc;
+        modalPrice.textContent = data.price;
+        productModal.classList.add('show');
+      });
+      // Card click (optional: open modal)
+      product.addEventListener('click', function(e) {
+        if (e.target.classList.contains('buy-button')) return;
+        if (e.target.classList.contains('product-overlay')) return;
+        const data = JSON.parse(product.getAttribute('data-product'));
+        modalImg.src = data.img;
+        modalImg.alt = data.title + ' image';
+        modalTitle.textContent = data.title;
+        modalDesc.textContent = data.desc;
+        modalPrice.textContent = data.price;
+        productModal.classList.add('show');
+      });
+      // Order Now button in card
+      product.querySelector('.buy-button').addEventListener('click', function(e) {
+        e.stopPropagation();
+        lastFocusedOrderBtn = this;
+        showPayment();
+      });
+    });
+    // Modal close
+    modalCloseBtn.addEventListener('click', function() {
+      productModal.classList.remove('show');
+      if (lastFocusedOrderBtn) lastFocusedOrderBtn.focus();
+    });
+    // Modal Order Now
+    modalOrderBtn.addEventListener('click', function() {
+      productModal.classList.remove('show');
+      showPayment();
+    });
+    // Close modal on outside click
+    productModal.addEventListener('click', function(e) {
+      if (e.target === productModal) {
+        productModal.classList.remove('show');
+      }
+    });
+    // ESC key closes modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') productModal.classList.remove('show');
+    });
+
     // Back to top button functionality
     const backToTopBtn = document.getElementById("backToTop");
-    
     window.addEventListener("scroll", () => {
       if (window.pageYOffset > 500) {
         backToTopBtn.classList.add("show");
@@ -1123,14 +1320,12 @@
         backToTopBtn.classList.remove("show");
       }
     });
-    
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({
         top: 0,
         behavior: "smooth"
       });
     });
-
     // Close toast when clicking anywhere
     document.addEventListener("click", function() {
       const toast = document.getElementById("toast");
