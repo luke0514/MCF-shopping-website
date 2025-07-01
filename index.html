@@ -34,6 +34,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      transition: background 0.4s, color 0.4s, box-shadow 0.4s, border-color 0.4s;
     }
 
     body {
@@ -46,6 +47,159 @@
       line-height: 1.7;
       scroll-behavior: smooth;
       overflow-x: hidden;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    /* Light mode overrides */
+    body.light-mode {
+      --bg: #f5f6fa;
+      --primary: #18191a;
+      --accent: #ff5a4d;
+      --accent-hover: #e04a3e;
+      --text: #18191a;
+      --card: #fff;
+      --gray: #444;
+      --light-gray: #f8f9fb;
+      --border-radius: 18px;
+      --shadow: 0 4px 24px rgba(77,139,255,0.06);
+      --gold: #ffd700;
+      --yellow: #ffde59;
+      --blue: #4d8bff;
+      --purple: #b84dff;
+      --divider: #e3e6ee;
+      background-image: none;
+    }
+    body.light-mode, body.light-mode p, body.light-mode span, body.light-mode li, body.light-mode .stat-text, body.light-mode .product-info, body.light-mode .instructions, body.light-mode .highlight-box, body.light-mode .about-section, body.light-mode .contact-section, body.light-mode .impact-section, body.light-mode .footer, body.light-mode .modal-content {
+      color: #18191a !important;
+    }
+    body.light-mode h1, body.light-mode h2, body.light-mode h3, body.light-mode h4, body.light-mode h5, body.light-mode h6 {
+      color: #18191a !important;
+    }
+    body.light-mode nav a {
+      color: #18191a !important;
+    }
+    body.light-mode nav a:hover {
+      color: var(--accent) !important;
+    }
+    body.light-mode {
+      background: var(--bg) !important;
+    }
+    body.light-mode header {
+      background: linear-gradient(135deg, #f5f6fa 0%, #f8f9fb 100%) !important;
+      box-shadow: 0 2px 12px rgba(77,139,255,0.04);
+      background-image: linear-gradient(135deg, #f5f6fa 0%, #f8f9fb 100%) !important;
+    }
+    body.light-mode header::before {
+      display: none !important;
+    }
+    body.light-mode .header-content {
+      background: #fff !important;
+      color: #18191a !important;
+      border: 1px solid var(--divider);
+      box-shadow: 0 4px 24px rgba(77,139,255,0.06);
+      border-radius: var(--border-radius);
+      padding: 48px 32px;
+    }
+    body.light-mode header h1 {
+      background: none !important;
+      -webkit-background-clip: unset !important;
+      -webkit-text-fill-color: unset !important;
+      color: #18191a !important;
+      text-shadow: none !important;
+    }
+    body.light-mode header p {
+      color: #444 !important;
+    }
+    body.light-mode .about-section,
+    body.light-mode .contact-section,
+    body.light-mode .impact-section,
+    body.light-mode .product,
+    body.light-mode .product-modal .modal-content {
+      background: #fff !important;
+      color: #18191a !important;
+      box-shadow: 0 4px 24px rgba(77,139,255,0.06);
+      border: 1px solid var(--divider);
+      border-radius: var(--border-radius);
+      background-image: none !important;
+      padding: 56px 36px;
+    }
+    body.light-mode .about-section::before,
+    body.light-mode .contact-section::before,
+    body.light-mode .impact-section::before {
+      display: none !important;
+    }
+    body.light-mode .highlight-box {
+      background: var(--light-gray) !important;
+      color: #18191a !important;
+      border: 1px solid var(--divider);
+      border-radius: var(--border-radius);
+      padding: 36px 28px;
+    }
+    body.light-mode .highlight-box::before {
+      background: linear-gradient(to right, var(--blue), var(--purple));
+    }
+    body.light-mode .impact-stats .stat {
+      background: var(--light-gray) !important;
+      color: #18191a !important;
+      border: 1px solid var(--divider);
+      box-shadow: 0 2px 8px rgba(77,139,255,0.04);
+      border-radius: var(--border-radius);
+      padding: 40px 24px;
+    }
+    body.light-mode .impact-stats .stat i {
+      color: var(--accent) !important;
+      text-shadow: none !important;
+    }
+    body.light-mode .footer {
+      background: var(--bg) !important;
+      color: #18191a !important;
+      box-shadow: 0 -2px 8px rgba(77,139,255,0.04);
+      border-top: 1px solid var(--divider);
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+    body.light-mode .svg-divider path {
+      fill: var(--divider) !important;
+      fill-opacity: 1;
+    }
+    body.light-mode .mode-toggle {
+      background: #fff;
+      color: #18191a;
+      border: 1px solid var(--divider);
+      box-shadow: 0 2px 8px rgba(77,139,255,0.04);
+    }
+    body.light-mode .highlight {
+      color: var(--accent);
+      text-shadow: none;
+    }
+    body.light-mode nav {
+      background-color: #fff;
+      border-bottom: 1px solid var(--divider);
+      box-shadow: 0 2px 8px rgba(77,139,255,0.04);
+    }
+    body.light-mode nav a {
+      color: #18191a !important;
+    }
+    body.light-mode nav a:hover {
+      color: var(--accent) !important;
+    }
+    body.light-mode .buy-button {
+      background: linear-gradient(135deg, var(--accent), #ff8a78);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(255,90,77,0.08);
+    }
+    body.light-mode .buy-button:hover {
+      background: linear-gradient(135deg, #ff8a78, var(--accent));
+      color: #fff;
+    }
+    body.light-mode .product-overlay {
+      background: rgba(230, 230, 230, 0.92);
+      color: var(--accent);
+    }
+    body.light-mode .section-title {
+      color: #18191a !important;
+    }
+    body.light-mode main > section, body.light-mode .about-section, body.light-mode .contact-section, body.light-mode .impact-section {
+      margin-bottom: 140px;
     }
 
     header {
@@ -1008,6 +1162,31 @@
     .modal-close:hover {
       color: var(--accent);
     }
+
+    /* Toggle Button */
+    .mode-toggle {
+      position: fixed;
+      top: 28px;
+      right: 32px;
+      z-index: 1201;
+      background: var(--card);
+      color: var(--primary);
+      border: none;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(77,139,255,0.10);
+      cursor: pointer;
+      font-size: 1.7rem;
+      transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+    .mode-toggle:hover {
+      background: var(--yellow);
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -1227,6 +1406,10 @@
     </div>
   </div>
 
+  <button class="mode-toggle" id="modeToggle" aria-label="Toggle light/dark mode">
+    <i class="fas fa-sun" id="modeIcon"></i>
+  </button>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     // Initialize AOS animations
@@ -1330,6 +1513,22 @@
     document.addEventListener("click", function() {
       const toast = document.getElementById("toast");
       toast.style.display = "none";
+    });
+
+    // Light/Dark Mode Toggle
+    const modeToggle = document.getElementById('modeToggle');
+    const modeIcon = document.getElementById('modeIcon');
+    function setMode(isLight) {
+      document.body.classList.toggle('light-mode', isLight);
+      modeIcon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+      localStorage.setItem('mcf-mode', isLight ? 'light' : 'dark');
+    }
+    // On load, set mode from localStorage
+    const savedMode = localStorage.getItem('mcf-mode');
+    if (savedMode === 'light') setMode(true);
+    else setMode(false);
+    modeToggle.addEventListener('click', () => {
+      setMode(!document.body.classList.contains('light-mode'));
     });
   </script>
 </body>
