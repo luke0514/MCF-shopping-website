@@ -549,6 +549,11 @@
       line-height: 1.8;
     }
 
+    .muted {
+      color: var(--gray) !important;
+      font-size: 1rem !important;
+    }
+
     .price {
       font-size: 2rem;
       font-weight: 700;
@@ -1221,6 +1226,56 @@
           </button>
         </div>
       </div>
+
+      <!-- NEW: Hoodies -->
+      <div class="product" data-aos="fade-up" data-aos-delay="800">
+        <div class="product-image black-bg">
+          <img
+            src="images/mcf_blackhoodie_front.png"
+            data-alt="images/mcf_blackhoodie_back.png"
+            alt="MCF Balloon Hoodie (Black) — front chest MCF + balloon, large back balloon print">
+        </div>
+        <div class="product-info">
+          <h2>MCF Balloon Hoodie (Black)</h2>
+          <p>
+            Heavyweight fleece hoodie with the MCF balloon mark.<br>
+            • Front: MCF + balloon chest logo<br>
+            • Back: Large mint balloon graphic<br>
+            • Unisex fit · Soft brushed interior · Ribbed cuffs/hem
+          </p>
+          <p class="muted">
+            Material: 65% cotton / 35% polyester · 300–320 gsm (approx). Care: cold wash, inside-out, line dry.
+            Your purchase helps fund MCF programs.
+          </p>
+          <span class="price">¥168.00</span>
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Order Now</button>
+        </div>
+      </div>
+
+      <div class="product" data-aos="fade-up" data-aos-delay="1000">
+        <div class="product-image white-bg">
+          <img
+            src="images/mcf_whitehoodie_front.png"
+            data-alt="images/mcf_whitehoodie_back.png"
+            alt="MCF Balloon Hoodie (White) — front chest MCF + balloon, large back balloon print">
+        </div>
+        <div class="product-info">
+          <h2>MCF Balloon Hoodie (White)</h2>
+          <p>
+            Clean white edition of the MCF balloon hoodie.<br>
+            • Front: MCF + balloon chest logo<br>
+            • Back: Large mint balloon graphic<br>
+            • Unisex fit · Soft brushed interior · Ribbed cuffs/hem
+          </p>
+          <p class="muted">
+            Material: 65% cotton / 35% polyester · 300–320 gsm (approx). Care: cold wash, inside-out, line dry.
+            Every purchase supports MCF.
+          </p>
+          <span class="price">¥168.00</span>
+          <button class="buy-button"><i class="fas fa-shopping-cart"></i> Order Now</button>
+        </div>
+      </div>
+      <!-- /NEW -->
     </div>
     
     <div class="wave-divider">
@@ -1235,7 +1290,7 @@
       
       <div class="instructions">
         <ol>
-          <li>Scan the QR code below to pay <strong>¥50.00</strong> using WeChat</li>
+          <li>Scan the QR code below to pay <strong>the amount shown on your item</strong> (Tees: ¥50.00 · Hoodies: ¥168.00) using WeChat</li>
           <li>In the payment notes/message field, include:
             <ul style="margin-top: 12px; padding-left: 25px; list-style-type: circle;">
               <li>T-shirt size (S, M, L, XL)</li>
@@ -1373,6 +1428,29 @@
           showPayment();
         });
       });
+
+      // Image swap functionality for hoodies
+      if (!window.__mcfSwapBound) {
+        document.querySelectorAll('.product-image img[data-alt]').forEach(function (img) {
+          var primary = img.getAttribute('src');
+          var altSrc  = img.getAttribute('data-alt');
+          var showingAlt = false;
+
+          img.addEventListener('mouseenter', function () {
+            if (!showingAlt) { img.dataset.src = primary; img.src = altSrc; showingAlt = true; }
+          });
+          img.addEventListener('mouseleave', function () {
+            if (showingAlt) { img.src = img.dataset.src || primary; showingAlt = false; }
+          });
+          img.addEventListener('click', function () { // mobile toggle
+            var current = img.src;
+            img.src = showingAlt ? (img.dataset.src || primary) : altSrc;
+            img.dataset.src = current;
+            showingAlt = !showingAlt;
+          });
+        });
+        window.__mcfSwapBound = true;
+      }
     });
 
     // Back to top button functionality
